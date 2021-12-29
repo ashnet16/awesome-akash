@@ -1,0 +1,40 @@
+version: "1.0"
+
+services:
+  web:
+    image: 
+    expose:
+      - port: 8000
+        as: 8000
+        to:
+          - global: true
+
+profiles:
+  compute:
+    web:
+      resources:
+        cpu:
+          units:
+        memory:
+          size:
+        storage:
+          size:
+  placement:
+    eastcoast:
+      attributes:
+        host: akash
+      signedBy:
+        anyOf:
+          - ""
+      pricing:
+        web: 
+          denom: uakt
+          amount: 
+
+deployment:
+  web:
+    eastcoast:
+      profile: web
+      count: 1
+
+EOF
